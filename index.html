@@ -13,7 +13,7 @@
 
 <body>
 
-    <audio autoplay="autopaly" loop="loop" id="audios" preload="auto">
+    <audio autoplay muted loop id="audios" preload="auto">
         <source src="https://raw.githubusercontent.com/rohith-sunilkumar/birthday/main/heart_of_love_tcw/006/MP3/1.mp3" type="audio/mpeg" />
     </audio>
 
@@ -46,6 +46,26 @@
     </div>
 
     <script type="text/javascript" src="heart_of_love_tcw/006/js/love.js"></script>
+    
+    <script>
+        // Enable audio playback on user interaction
+        document.addEventListener('click', function() {
+            const audio = document.getElementById('audios');
+            if (audio) {
+                audio.muted = false;
+                audio.play().catch(err => console.log('Audio play error:', err));
+            }
+        }, { once: true });
+        
+        // Also try to unmute and play after animation starts
+        setTimeout(() => {
+            const audio = document.getElementById('audios');
+            if (audio) {
+                audio.muted = false;
+                audio.play().catch(err => console.log('Audio play error:', err));
+            }
+        }, 15000);
+    </script>
 
 </body>
 
