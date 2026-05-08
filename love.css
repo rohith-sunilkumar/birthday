@@ -16,16 +16,45 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+@keyframes textAppear {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%) scale(0.5) translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) scale(1) translateY(0);
+    }
+}
+
+@keyframes textGlow {
+    0%, 100% {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        text-shadow: 0 0 10px #ff1493, 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+}
+
 .birthday-text {
     position: absolute;
-    top: 50px;
+    bottom: 100px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
     z-index: 100;
     color: #ff1493;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Arial', sans-serif;
     display: none;
+    transition: all 0.5s ease-in-out;
+}
+
+.birthday-text.show {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    animation: textAppear 1s ease-out, textGlow 2s ease-in-out 1s infinite;
 }
 
 .birthday-text h1 {
@@ -82,7 +111,7 @@ body {
     width: 40px;
     height: 40px;
     position: absolute;
-    background: url("../images/heart.png") no-repeat;
+    background: url("heart_of_love_tcw/006/images/heart.png") no-repeat;
     background-size: contain;
     /*background-color: #c40908;*/
     /*border: 1px solid silver;*/

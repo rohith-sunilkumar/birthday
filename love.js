@@ -107,6 +107,15 @@ function Rise() {
 
             console.log("升空完毕");
 
+            // Show the birthday text after animation completes
+            const birthdayText = document.querySelector('.birthday-text');
+            if (birthdayText) {
+                birthdayText.classList.add('show');
+                console.log('Birthday text should now be visible');
+            } else {
+                console.log('Birthday text element not found!');
+            }
+
         }
 
         love.style.top = (love_top - distance) + "px";
