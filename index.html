@@ -13,8 +13,8 @@
 
 <body>
 
-    <audio autoplay muted loop id="audios" preload="auto">
-        <source src="https://raw.githubusercontent.com/rohith-sunilkumar/birthday/main/heart_of_love_tcw/006/MP3/1.mp3" type="audio/mpeg" />
+    <audio id="audios" loop preload="auto">
+        <source src="https://cdn.jsdelivr.net/gh/rohith-sunilkumar/birthday@main/heart_of_love_tcw/006/MP3/1.mp3" type="audio/mpeg" />
     </audio>
 
     <div class="birthday-text">
@@ -48,23 +48,26 @@
     <script type="text/javascript" src="heart_of_love_tcw/006/js/love.js"></script>
     
     <script>
-        // Enable audio playback on user interaction
-        document.addEventListener('click', function() {
-            const audio = document.getElementById('audios');
-            if (audio) {
-                audio.muted = false;
-                audio.play().catch(err => console.log('Audio play error:', err));
-            }
-        }, { once: true });
+        // Simple audio control
+        const audio = document.getElementById('audios');
         
-        // Also try to unmute and play after animation starts
-        setTimeout(() => {
-            const audio = document.getElementById('audios');
-            if (audio) {
-                audio.muted = false;
-                audio.play().catch(err => console.log('Audio play error:', err));
-            }
-        }, 15000);
+        // Try to play on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                audio.play().catch(err => {
+                    console.log('Autoplay failed, waiting for user interaction');
+                });
+            }, 2000);
+        });
+        
+        // Play on any user interaction
+        document.addEventListener('click', () => {
+            audio.play().catch(err => console.log('Play error:', err));
+        });
+        
+        document.addEventListener('touchstart', () => {
+            audio.play().catch(err => console.log('Play error:', err));
+        });
     </script>
 
 </body>
